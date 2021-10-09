@@ -1,15 +1,11 @@
 package medianotes.controller;
 
+
 import medianotes.dto.NoteCreateDto;
+import medianotes.dto.NoteDeleteDto;
 import medianotes.dto.NoteDto;
 import medianotes.dto.NoteEditDto;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
 import java.util.List;
@@ -18,8 +14,10 @@ import java.util.List;
 @RequestMapping("/notes")
 public class NoteController {
 
+
     @GetMapping
     public List<NoteDto> getAllNotes() {
+
         return List.of(
                 new NoteDto(1, "test-name", "text-text-text-text!"),
                 new NoteDto(2, "test-name-3", "text-text-text-text!"),
@@ -52,5 +50,14 @@ public class NoteController {
         );
 
         return noteDto;
+    }
+
+    @DeleteMapping("/delete")
+    public NoteDeleteDto deleteNote(@RequestBody NoteDeleteDto deleteDto){
+        // todo когда-нибудь удалить/пометить на удаление объект(ы) изнастоящей БД :)
+
+        return deleteDto;
+
+
     }
 }
